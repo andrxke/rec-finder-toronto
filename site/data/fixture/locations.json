@@ -1,0 +1,167 @@
+{
+ "generated": "2026-10-16T05:00:00Z",
+ "locations": {
+  "749": {
+   "name": "Wallace Emerson Community Centre",
+   "address": "1260 Dufferin St",
+   "postal": "M6H 4C3",
+   "district": "Toronto and East York",
+   "lat": 43.6672,
+   "lng": -79.441,
+   "accessibility": "Fully Accessible",
+   "ttc": "Dufferin 29 bus",
+   "facilities": [
+    "Indoor Pool",
+    "Gymnasium",
+    "Multipurpose Room"
+   ]
+  },
+  "1023": {
+   "name": "Regent Park Aquatic Centre",
+   "address": "640 Dundas St E",
+   "postal": "M5A 2B8",
+   "district": "Toronto and East York",
+   "lat": 43.6597,
+   "lng": -79.3614,
+   "accessibility": "Fully Accessible",
+   "ttc": "Dundas 505 streetcar",
+   "facilities": [
+    "Indoor Pool"
+   ]
+  },
+  "312": {
+   "name": "Masaryk-Cowan Community Recreation Centre",
+   "address": "220 Cowan Ave",
+   "postal": "M6K 2N6",
+   "district": "Toronto and East York",
+   "lat": 43.64,
+   "lng": -79.4352,
+   "accessibility": "Partially Accessible",
+   "ttc": "King 504 streetcar",
+   "facilities": [
+    "Indoor Pool",
+    "Gymnasium",
+    "Weight Room"
+   ]
+  },
+  "88": {
+   "name": "Matty Eckler Community Centre",
+   "address": "953 Gerrard St E",
+   "postal": "M4M 1Z4",
+   "district": "Toronto and East York",
+   "lat": 43.6663,
+   "lng": -79.3394,
+   "accessibility": "Fully Accessible",
+   "ttc": "Carlaw 72 bus, Gerrard 506 streetcar",
+   "facilities": [
+    "Gymnasium",
+    "Multipurpose Room"
+   ]
+  },
+  "540": {
+   "name": "North Toronto Memorial Community Centre",
+   "address": "200 Eglinton Ave W",
+   "postal": "M4R 1A7",
+   "district": "North York",
+   "lat": 43.7066,
+   "lng": -79.4003,
+   "accessibility": "Fully Accessible",
+   "ttc": "Eglinton subway station",
+   "facilities": [
+    "Indoor Pool",
+    "Gymnasium",
+    "Weight Room",
+    "Multipurpose Room"
+   ]
+  },
+  "611": {
+   "name": "Douglas Snow Aquatic Centre",
+   "address": "5100 Yonge St",
+   "postal": "M2N 5V7",
+   "district": "North York",
+   "lat": 43.768,
+   "lng": -79.4129,
+   "accessibility": "Fully Accessible",
+   "ttc": "North York Centre subway station",
+   "facilities": [
+    "Indoor Pool"
+   ]
+  },
+  "905": {
+   "name": "Scarborough Village Community Centre",
+   "address": "3600 Kingston Rd",
+   "postal": "M1M 1R9",
+   "district": "Scarborough",
+   "lat": 43.74,
+   "lng": -79.216,
+   "accessibility": "Fully Accessible",
+   "ttc": "Kingston Rd 12 bus",
+   "facilities": [
+    "Indoor Pool",
+    "Gymnasium",
+    "Indoor Rink",
+    "Multipurpose Room"
+   ]
+  },
+  "934": {
+   "name": "Agincourt Recreation Centre",
+   "address": "31 Glen Watford Dr",
+   "postal": "M1S 2B7",
+   "district": "Scarborough",
+   "lat": 43.7854,
+   "lng": -79.2793,
+   "accessibility": "Partially Accessible",
+   "ttc": "Sheppard East 85 bus",
+   "facilities": [
+    "Indoor Rink",
+    "Gymnasium",
+    "Multipurpose Room"
+   ]
+  },
+  "201": {
+   "name": "Etobicoke Olympium",
+   "address": "590 Rathburn Rd",
+   "postal": "M9C 3T3",
+   "district": "Etobicoke York",
+   "lat": 43.6463,
+   "lng": -79.5822,
+   "accessibility": "Fully Accessible",
+   "ttc": "Rathburn 48 bus",
+   "facilities": [
+    "Indoor Pool",
+    "Gymnasium",
+    "Weight Room"
+   ]
+  },
+  "233": {
+   "name": "Amesbury Sports Complex",
+   "address": "1507 Lawrence Ave W",
+   "postal": "M6L 1A8",
+   "district": "Etobicoke York",
+   "lat": 43.7066,
+   "lng": -79.49,
+   "accessibility": "Fully Accessible",
+   "ttc": "Lawrence West 52 bus",
+   "facilities": [
+    "Indoor Pool",
+    "Indoor Rink",
+    "Gymnasium"
+   ]
+  },
+  "77": {
+   "name": "Jimmie Simpson Recreation Centre",
+   "address": "870 Queen St E",
+   "postal": "M4M 3G9",
+   "district": "Toronto and East York",
+   "lat": null,
+   "lng": null,
+   "accessibility": "Partially Accessible",
+   "ttc": "Queen 501 streetcar",
+   "facilities": [
+    "Gymnasium",
+    "Weight Room",
+    "Multipurpose Room"
+   ]
+  }
+ }
+}

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Toronto drop-in recreation. Open now or soon.">
+  <title>Rec Finder Toronto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7' fill='%231f55c9'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="icon-swim" viewBox="0 0 24 24"><circle cx="17" cy="6" r="2"/><path d="M5 11l4-3 3 3 2-2"/><path d="M2 15c1.7 0 1.7-1 3.3-1s1.7 1 3.4 1 1.6-1 3.3-1 1.7 1 3.3 1 1.7-1 3.4-1 1.6 1 3.3 1"/><path d="M2 19.5c1.7 0 1.7-1 3.3-1s1.7 1 3.4 1 1.6-1 3.3-1 1.7 1 3.3 1 1.7-1 3.4-1 1.6 1 3.3 1"/></symbol>
+    <symbol id="icon-basketball" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3v18"/><path d="M5.6 5.6a9 9 0 0 1 0 12.8M18.4 5.6a9 9 0 0 0 0 12.8"/></symbol>
+    <symbol id="icon-racquet" viewBox="0 0 24 24"><ellipse cx="9.5" cy="9" rx="6" ry="6.5"/><path d="M6 7h7M5.5 10.5h8M8 3.5v11M11.5 3.5v11"/><path d="M13.5 13.8L20 20.5"/></symbol>
+    <symbol id="icon-court" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 12c0-4 1.6-7 4.2-8.4M12 12c-3.5 2-7 2.2-8.9 1.2M12 12c3.5 2 5.4 4.9 5.6 7.6"/></symbol>
+    <symbol id="icon-skate" viewBox="0 0 24 24"><path d="M6 4h4v6.5l6.2 1.8A4 4 0 0 1 19 16v1H6z"/><path d="M3 21h17.5"/><path d="M8 17v4M16 17v4"/></symbol>
+    <symbol id="icon-fitness" viewBox="0 0 24 24"><path d="M6.5 7v10M3.5 9.5v5M17.5 7v10M20.5 9.5v5M6.5 12h11"/></symbol>
+    <symbol id="icon-aquafit" viewBox="0 0 24 24"><path d="M12 3c2.6 3.1 4 5.3 4 7.2a4 4 0 0 1-8 0C8 8.3 9.4 6.1 12 3z"/><path d="M2 19c1.7 0 1.7-1 3.3-1s1.7 1 3.4 1 1.6-1 3.3-1 1.7 1 3.3 1 1.7-1 3.4-1 1.6 1 3.3 1"/></symbol>
+    <symbol id="icon-kids" viewBox="0 0 24 24"><rect x="3.5" y="13" width="7.5" height="7.5" rx="1"/><rect x="13" y="13" width="7.5" height="7.5" rx="1"/><path d="M12 3.5l4.5 7h-9z"/></symbol>
+    <symbol id="icon-youth" viewBox="0 0 24 24"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4.5" height="6.5" rx="1.5"/><rect x="16.5" y="14" width="4.5" height="6.5" rx="1.5"/></symbol>
+    <symbol id="icon-arts" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18 1.8 1.8 0 0 0 1.3-3.1 1.7 1.7 0 0 1 1.2-2.9H16a5 5 0 0 0 5-5c0-3.9-4-7-9-7z"/><circle cx="7.5" cy="11.5" r="1"/><circle cx="10" cy="7.5" r="1"/><circle cx="15" cy="7.5" r="1"/></symbol>
+    <symbol id="icon-other" viewBox="0 0 24 24"><path d="M12 3l2 5.9 6 2.1-6 2.1-2 5.9-2-5.9-6-2.1 6-2.1z"/><path d="M19 17v4M17 19h4"/></symbol>
+    <symbol id="icon-all" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+    <symbol id="icon-centre" viewBox="0 0 24 24"><path d="M4 21V9l8-5.5L20 9v12"/><path d="M9.5 21v-6h5v6M2.5 21h19"/></symbol>
+    <symbol id="icon-back" viewBox="0 0 24 24"><path d="M20 12H5M11 5l-7 7 7 7"/></symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="icon-filters" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></symbol>
+    <symbol id="icon-location" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+    <symbol id="icon-current-location" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
+    <symbol id="icon-directions" viewBox="0 0 24 24"><path d="M12 2.5l9.5 9.5-9.5 9.5L2.5 12z"/><path d="M9 15v-3a1.5 1.5 0 0 1 1.5-1.5H15M12.5 8l2.5 2.5-2.5 2.5"/></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <a class="brand" href="#" data-action="go-home">
+      <span class="brand-mark" aria-hidden="true"></span> Rec Finder
+      <span class="brand-city">Toronto</span>
+    </a>
+  </header>
+
+  <main id="main">
+    <p id="load-status" class="load-status" role="status">Loading schedules…</p>
+
+    <section id="home-view" class="home" hidden aria-labelledby="home-title">
+      <h1 id="home-title" class="visually-hidden">Drop-ins near you</h1>
+
+      <section class="start-card" aria-label="Starting point">
+        <div class="start-row">
+          <svg class="icon start-icon" aria-hidden="true"><use href="#icon-location"/></svg>
+          <p id="start-label" class="start-label"></p>
+          <button type="button" id="change-origin" class="button button-small" data-action="open-location"></button>
+        </div>
+        <div class="who" role="group" aria-labelledby="home-who-label">
+          <p id="home-who-label" class="who-label">Who’s going?</p>
+          <div id="home-who-chips" class="chip-row"></div>
+        </div>
+      </section>
+
+      <section class="open-now" aria-labelledby="open-now-title">
+        <div class="section-head">
+          <h2 id="open-now-title"></h2>
+          <a class="see-all" href="#cat=all" data-action="see-all">See all<span class="visually-hidden"> sessions in the next 2 hours</span></a>
+        </div>
+        <ul id="open-now-list" class="open-now-list"></ul>
+      </section>
+
+      <section class="pick" aria-labelledby="pick-title">
+        <h2 id="pick-title">Pick an activity</h2>
+        <div class="search">
+          <label for="search-input" class="visually-hidden">Search activities or centres</label>
+          <svg class="icon search-field-icon" aria-hidden="true"><use href="#icon-search"/></svg>
+          <input id="search-input" class="search-input" type="search" autocomplete="off"
+            placeholder="Search sports or centres" aria-describedby="search-hint">
+          <p id="search-hint" class="visually-hidden">Matches appear below.</p>
+          <ul id="search-results" class="search-results" aria-label="Search matches" hidden></ul>
+        </div>
+        <div id="category-grid" class="tile-grid"></div>
+      </section>
+    </section>
+
+    <section id="results-view" class="results-view" hidden aria-labelledby="results-title">
+      <div class="results-side">
+        <div class="results-header">
+          <div class="results-head">
+            <button type="button" class="icon-button" data-action="go-home" aria-label="Back to activities">
+              <svg class="icon" aria-hidden="true"><use href="#icon-back"/></svg>
+            </button>
+            <h1 id="results-title" class="results-title"></h1>
+            <button type="button" id="filters-button" class="button filters-button" data-action="open-filters">
+              <svg class="icon" aria-hidden="true"><use href="#icon-filters"/></svg>
+              Filters <span id="filter-badge" class="badge" hidden></span>
+            </button>
+          </div>
+          <div id="group-row" class="chip-row" role="group" aria-label="Activity"></div>
+          <div id="when-chips" class="chip-row" role="group" aria-label="When"></div>
+          <label id="date-label" class="date-label" hidden>
+            <span class="visually-hidden">Date</span>
+            <input id="date-input" type="date">
+          </label>
+        </div>
+
+        <div class="results-bar">
+          <p id="result-summary" class="result-summary" aria-live="polite"></p>
+          <div class="segmented" role="group" aria-label="Show results as">
+            <button type="button" id="list-mode-button" class="segment" data-action="set-mode" data-value="list" aria-pressed="true">List</button>
+            <button type="button" id="map-mode-button" class="segment" data-action="set-mode" data-value="map" aria-pressed="false">Map</button>
+          </div>
+        </div>
+        <div id="age-notice" class="age-notice" aria-live="polite"></div>
+
+        <div id="list-pane" class="list-pane">
+          <div id="results-list" class="results-list"></div>
+          <button type="button" id="show-more" class="button show-more" data-action="show-more" hidden>Show more</button>
+        </div>
+      </div>
+
+      <div id="map-pane" class="map-pane">
+        <div class="map-frame">
+          <div id="map" class="map" role="region" aria-label="Map of matching centres. Same results as the list."></div>
+          <div class="map-legend" aria-hidden="true">
+            <span><span class="legend-pin legend-open"></span>Open now</span>
+            <span><span class="legend-pin legend-later"></span>Later</span>
+          </div>
+        </div>
+        <p id="map-fallback" class="map-fallback" hidden>Map unavailable. Use the list.</p>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="filters-sheet" class="sheet filters-sheet" aria-labelledby="filters-title">
+    <div class="sheet-header">
+      <h2 id="filters-title" tabindex="-1">Filters</h2>
+      <button type="button" class="icon-button" data-action="close-filters" aria-label="Close filters">
+        <svg class="icon" aria-hidden="true"><use href="#icon-close"/></svg>
+      </button>
+    </div>
+    <div class="sheet-body">
+      <section class="sheet-group" aria-labelledby="origin-heading">
+        <h3 id="origin-heading" class="sheet-group-title">Starting point</h3>
+        <p id="origin-current" class="origin-current"></p>
+        <button type="button" id="near-button" class="button" data-action="use-device-location">
+          <svg class="icon" aria-hidden="true"><use href="#icon-current-location"/></svg>
+          Use my current location
+        </button>
+        <p id="geo-status" class="status-text" role="status"></p>
+        <form id="origin-form" class="origin-form" novalidate>
+          <label for="origin-input" class="field-label">Postal code, intersection or neighbourhood</label>
+          <div class="origin-search">
+            <input id="origin-input" class="text-input" type="search" autocomplete="off" enterkeyhint="search"
+              placeholder="e.g. M6H 4C3 or Bloor &amp; Dufferin">
+            <button type="submit" class="button">Find</button>
+          </div>
+        </form>
+        <p id="origin-status" class="status-text" role="status"></p>
+        <label class="field-label" for="origin-centre">Or a community centre</label>
+        <select id="origin-centre" class="select-input">
+          <option value="">Choose a centre</option>
+        </select>
+        <p class="note">Place names go to OpenStreetMap Nominatim. Postal codes and centres stay on this device.</p>
+      </section>
+
+      <section class="sheet-group" role="group" aria-labelledby="sheet-who-label">
+        <h3 id="sheet-who-label" class="sheet-group-title">Who’s going?</h3>
+        <div id="sheet-who-chips" class="chip-wrap"></div>
+      </section>
+
+      <fieldset id="activity-fieldset" class="sheet-group results-only">
+        <legend class="sheet-group-title">Activity</legend>
+        <div id="activity-checks" class="checks"></div>
+      </fieldset>
+
+      <section class="sheet-group results-only" role="group" aria-labelledby="tod-label">
+        <h3 id="tod-label" class="sheet-group-title">Time of day</h3>
+        <div id="tod-chips" class="chip-wrap"></div>
+        <p id="tod-note" class="note" hidden>Not used with Next 2 hours.</p>
+      </section>
+
+      <div class="sheet-group results-only">
+        <label class="sheet-group-title" for="district-select">District</label>
+        <select id="district-select" class="select-input">
+          <option value="">All districts</option>
+        </select>
+      </div>
+
+      <div class="sheet-group results-only">
+        <label class="switch">
+          <span class="switch-text">Group by centre</span>
+          <input id="by-centre-switch" type="checkbox" role="switch">
+        </label>
+      </div>
+    </div>
+    <div class="sheet-footer">
+      <button type="button" id="reset-filters" class="button results-only" data-action="reset-filters">Reset</button>
+      <button type="button" id="apply-filters" class="button button-primary" data-action="close-filters"></button>
+    </div>
+  </dialog>
+
+  <dialog id="centre-sheet" class="sheet" aria-labelledby="sheet-title">
+    <div class="sheet-header">
+      <div class="sheet-heading">
+        <h2 id="sheet-title"></h2>
+        <p id="sheet-subtitle" class="sheet-subtitle"></p>
+      </div>
+      <button type="button" class="icon-button" data-action="close-sheet" aria-label="Close centre details">
+        <svg class="icon" aria-hidden="true"><use href="#icon-close"/></svg>
+      </button>
+    </div>
+    <div id="sheet-body" class="sheet-body"></div>
+  </dialog>
+
+  <footer class="footer">
+    <p>
+      Data: <a href="https://open.toronto.ca/dataset/registered-programs-and-drop-in-courses-offering/">City of Toronto Open Data</a>,
+      <a href="https://open.toronto.ca/open-data-license/">Open Government Licence – Toronto</a>.
+      <span id="last-updated"></span>
+    </p>
+    <p>Schedules change. Check with the centre. Some drop-ins need a reserved spot:
+      <a href="https://www.toronto.ca/explore-enjoy/recreation/">City of Toronto recreation</a>.</p>
+    <p id="fixture-note" class="fixture-note" hidden>Live schedule unavailable. Showing sample data.</p>
+  </footer>
+</body>
+</html>
