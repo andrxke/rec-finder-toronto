@@ -1,4 +1,8 @@
 {
+ "140 Cheritan Ave, Toronto, ON": [
+  43.721367,
+  -79.409355
+ ],
  "156 Galloway Rd, Toronto, ON": [
   43.762429,
   -79.195058
@@ -6,5 +10,9 @@
  "201 Winchester St, Toronto, ON": [
   43.66732,
   -79.36105
+ ],
+ "276 Davisville Ave, Toronto, ON": [
+  43.701277,
+  -79.38575
  ]
 }
